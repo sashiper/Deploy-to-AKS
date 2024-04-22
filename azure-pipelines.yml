@@ -36,7 +36,7 @@ stages:
   displayName: Deploy to Dev
   dependsOn: Build
   variables:
-    acrsecret: 0k4FeXgige/gLTWiEZdL1Kxs/j7hjsaEl2KrMoeMAP+ACRAR63hx
+    acrsecret: $(ACR)
     acrdevurl: 'scorpacr.azurecr.io'
     replicaNo: 3
   jobs:
