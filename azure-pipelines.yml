@@ -20,7 +20,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'K8SExamplesACR'
+        containerRegistry: 'scorpacr'
         repository: '$(imageRepo)'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
@@ -36,13 +36,13 @@ stages:
   displayName: Deploy to Dev
   dependsOn: Build
   variables:
-    acrsecret: k8sexamplesacrauth
-    acrdevurl: 'k8sexamplesacr.azurecr.io'
+    acrsecret: 0k4FeXgige/gLTWiEZdL1Kxs/j7hjsaEl2KrMoeMAP+ACRAR63hx
+    acrdevurl: 'scorpacr.azurecr.io'
     replicaNo: 3
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
-    environment: 'k8sdev.default'
+    environment: 'k8sdev.ado'
     pool: 
       vmImage: ubuntu-latest
     strategy:
@@ -57,10 +57,10 @@ stages:
           - task: KubernetesManifest@0
             inputs:
               action: 'createSecret'
-              namespace: 'default'
+              namespace: 'ado'
               secretType: 'dockerRegistry'
               secretName: '$(acrsecret)'
-              dockerRegistryEndpoint: 'K8SExamplesACR'
+              dockerRegistryEndpoint: 'scorpacr'
           - task: replacetokens@3
             displayName: Replace Tokens
             inputs:
