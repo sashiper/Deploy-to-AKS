@@ -55,7 +55,7 @@ stages:
           action: 'createSecret'
           connectionType: 'kubernetesServiceConnection'
           kubernetesServiceConnection: 'k8sdev-AKS-ado-1713789494781'
-          namespace: 'default'
+          namespace: 'ado'
           secretType: 'dockerRegistry'
           secretName: '$(acrsecret)'
           dockerRegistryEndpoint: 'scorp-acr'
