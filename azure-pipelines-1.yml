@@ -21,7 +21,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'scorpacr'
+        containerRegistry: 'scorp-acr'
         repository: '$(imageRepo)'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
@@ -58,7 +58,7 @@ stages:
           namespace: 'default'
           secretType: 'dockerRegistry'
           secretName: '$(acrsecret)'
-          dockerRegistryEndpoint: 'scorpacr'
+          dockerRegistryEndpoint: 'scorp-acr'
       
       - task: KubernetesManifest@1
         inputs:
