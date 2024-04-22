@@ -54,7 +54,7 @@ stages:
         inputs:
           action: 'createSecret'
           connectionType: 'kubernetesServiceConnection'
-          kubernetesServiceConnection: 'k8sdev-AKS-ado-1713789494781'
+          kubernetesServiceConnection: 'AKS'
           namespace: 'ado'
           secretType: 'dockerRegistry'
           secretName: '$(acrsecret)'
@@ -64,7 +64,7 @@ stages:
         inputs:
           action: 'deploy'
           connectionType: 'kubernetesServiceConnection'
-          kubernetesServiceConnection: 'k8sdev-AKS-ado-1713789494781'
+          kubernetesServiceConnection: 'AKS'
           namespace: 'ado'
           manifests: |
             $(Pipeline.Workspace)/manifests/deployment.yml
